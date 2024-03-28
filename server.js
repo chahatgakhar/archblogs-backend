@@ -13,7 +13,6 @@ import admin from "firebase-admin";
 import serviceAccount from "./archblogs-cg-firebase-adminsdk-sucw4-8aecae0b69.json" assert{type:"json"}
 import { getAuth } from "firebase-admin/auth";
 import aws from "aws-sdk";
-import path from "path";
 
 
 
@@ -39,10 +38,7 @@ mongoose.connect(process.env.DB_URL, {
     autoIndex: true
 })
 
-server.use(express.static(path.join(__dirname, 'build')));
-server.get('/*', function (req, res) {
-    res.sendFile(path.join(__dirname, 'build', 'index.html'));
-  });
+
 
 
 //Setup s3 bucket
