@@ -1,7 +1,9 @@
-POST http://localhost:3000/get-profile
+POST http://localhost:3000/change-password
 Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY1YzMyYmNjMjcxZDg0MTk2YTg5YTJkYSIsImlhdCI6MTcwODQyNDA0N30.ebwRPz9AxROaAmuxw2OQNIS2pIr1Dz1HI9X9nndSt3g
 
 {
-    "username": "shaharpit2125"
+    "currentPassword": "@Arpit77304",
+    "newPassword": "@Ashok77304"
 }
 

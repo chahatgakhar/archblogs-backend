@@ -294,8 +294,8 @@ server.post("/facebook-auth", async (req, res) => {
     
 })
 
-server.post("change-password", verifyJWT, (req,res) => {
-    let { currentPassword, newPassword} = formatData;
+server.post("/change-password", verifyJWT, (req,res) => {
+    let { currentPassword, newPassword} = req.body;
 
     if (
         !passwordRegex.test(currentPassword) ||
@@ -306,7 +306,7 @@ server.post("change-password", verifyJWT, (req,res) => {
       });
       }
 
-      User.findOne({_id: req.user})
+      User.findOne({ _id: req.user})
       .then((user) => {
 
         if(user.google_auth){
@@ -318,7 +318,7 @@ server.post("change-password", verifyJWT, (req,res) => {
                 return res.status(500).json({ error: "Some error occured while changing password, Please try again later"})
             }
 
-            if(result){
+            if(!result){
                 return res.status(403).json({error: "Incorrect current password"})
             }
 
@@ -390,9 +390,9 @@ server.get("/trending-blogs", (req, res) => {
 
 server.post("/update-profile-image", verifyJWT, (req, res)=> {
 
-    let {url} = req.body;
+    let { url } = req.body;
 
-    User.findOneAndUpdate({_id:req.user},{"profile_info.profile_img": url})
+    User.findOneAndUpdate({ _id: req.user},{"personal_info.profile_img": url})
     .then(()=> {
         return res.status(200).json({profile_img: url})
     })
