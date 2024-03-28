@@ -39,8 +39,8 @@ mongoose.connect(process.env.DB_URL, {
     autoIndex: true
 })
 
-app.use(express.static(path.join(__dirname, 'build')));
-app.get('/*', function (req, res) {
+server.use(express.static(path.join(__dirname, 'build')));
+server.get('/*', function (req, res) {
     res.sendFile(path.join(__dirname, 'build', 'index.html'));
   });
 
