@@ -39,7 +39,9 @@ mongoose.connect(process.env.DB_URL, {
 })
 
 
-
+server.get("/health", async (req, res) => {
+    res.send({ message: "health is ok!" })
+});
 
 //Setup s3 bucket
 const s3= new aws.S3({
